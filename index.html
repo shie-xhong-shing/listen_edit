@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <title>聽考</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        /* Style the entire body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            font-size: 18px; /* Magnify font */
+        }
+
+        /* Center the form and give it a cleaner look */
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style form labels */
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            margin-top: 16px;
+        }
+
+        /* Style textarea */
+        textarea {
+            width: 100%; /* Full width */
+            height: 160px; /* Make textarea larger */
+            padding: 10px;
+            font-size: 42px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+            resize: vertical; /* Allow resizing vertically */
+        }
+
+        /* Style input fields */
+        input[type="text"] {
+            width: 100%; /* Full width */
+            padding: 10px;
+            font-size: 42px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+        }
+
+        /* Style the container around the form */
+        .form-container h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Style for saving and success messages */
+        .status-message {
+            text-align: center;
+            font-size: 18px;
+            color: green;
+        }
+        .error-message {
+            text-align: center;
+            font-size: 18px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Error Handling -->
+        <div v-if="error" class="error-message">
+            <p>{{ error }}</p>
+        </div>
+
+        <div v-else class="form-container">
+            <form>
+                <div>
+                    <textarea id="origin" v-model="data.origin"></textarea>
+                </div>
+                <div>
+                    <textarea id="problem" v-model="data.problem"></textarea> <!-- Changed to textarea -->
+                </div>
+                <div>
+                    <input type="text" id="chinese_meaning" v-model="data.chinese_meaning">
+                </div>
+                <div>
+                    <input type="text" id="spell" v-model="data.spell">
+                </div>
+            </form>
+
+            <!-- Optional: Display saving status -->
+            <div v-if="saving" class="status-message">
+                <p>Saving changes...</p>
+            </div>
+            <div v-else-if="saveSuccess" class="status-message">
+                <p>All changes saved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

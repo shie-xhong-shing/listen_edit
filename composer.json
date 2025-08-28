@@ -1,0 +1,5 @@
+{
+    "require": {
+        "php-patterns/activerecord": "^2.0"
+    }
+}

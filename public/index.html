@@ -1,0 +1,77 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Question Editor</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-if="question">
+      <h2>Edit Question</h2>
+      <div>
+        <label>Problem:</label>
+        <input v-model="question.problem">
+      </div>
+      <div>
+        <label>Origin:</label>
+        <input v-model="question.origin">
+      </div>
+      <div>
+        <label>Chinese Meaning:</label>
+        <input v-model="question.chinese_meaning">
+      </div>
+      <button @click="saveQuestion">Save</button>
+    </div>
+    <div v-else>
+      <p>No question loaded.</p>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        question: null,
+        ws: null
+      },
+      created() {
+        this.ws = new WebSocket('ws://' + window.location.host + '/ws');
+
+        this.ws.onmessage = (event) => {
+          this.question = JSON.parse(event.data);
+        };
+
+        this.ws.onopen = () => {
+          console.log('WebSocket connection established.');
+        };
+
+        this.ws.onclose = () => {
+          console.log('WebSocket connection closed.');
+        };
+      },
+      methods: {
+        saveQuestion() {
+          fetch('/questions/' + this.question.id, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.question)
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              alert('Question saved successfully!');
+            } else {
+              alert('Error: ' + data.errors.join(', '));
+            }
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+

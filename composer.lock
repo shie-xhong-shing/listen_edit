@@ -1,0 +1,69 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "c87db87b8f5a5f5dce3e83f8359ded93",
+    "packages": [
+        {
+            "name": "php-patterns/activerecord",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-activerecord/activerecord.git",
+                "reference": "2d4f36bc19aa496f465b1013dd48d61c0dcf38be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-activerecord/activerecord/zipball/2d4f36bc19aa496f465b1013dd48d61c0dcf38be",
+                "reference": "2d4f36bc19aa496f465b1013dd48d61c0dcf38be",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^v3.23.0",
+                "monolog/monolog": "^3.4",
+                "phpstan/phpstan": "1.12.23",
+                "phpstan/phpstan-phpunit": "^1.3",
+                "phpunit/phpunit": "^10"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "ActiveRecord.php",
+                    "lib/Utils.php"
+                ],
+                "psr-4": {
+                    "ActiveRecord\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "php-activerecord is an open source ORM library based on the ActiveRecord pattern.",
+            "homepage": "http://www.phpactiverecord.org/",
+            "keywords": [
+                "activerecord",
+                "orm"
+            ],
+            "support": {
+                "issues": "https://github.com/php-activerecord/activerecord/issues",
+                "source": "https://github.com/php-activerecord/activerecord/tree/v2.0.3"
+            },
+            "time": "2025-06-26T00:18:30+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
+}
